@@ -1,0 +1,1949 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width,
+      initial-scale=1.0,
+      maximum-scale=1.0,
+      user-scalable=no">
+
+<meta name="theme-color" content="#0f172a">
+
+<title>تعمیر و عیب‌یابی برد</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+    -webkit-tap-highlight-color:transparent;
+}
+
+:root{
+    --bg:#f1f5f9;
+    --card:#ffffff;
+    --text:#0f172a;
+    --muted:#64748b;
+    --primary:#2563eb;
+    --danger:#dc2626;
+    --success:#16a34a;
+    --border:#e2e8f0;
+}
+
+body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Tahoma,
+        Arial,
+        sans-serif;
+
+    padding-bottom:80px;
+}
+
+header{
+    background:
+        linear-gradient(
+            135deg,
+            #0f172a,
+            #1d4ed8
+        );
+
+    color:white;
+    padding:22px 18px;
+    border-radius:0 0 25px 25px;
+}
+
+.header-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+header h1{
+    margin:0;
+    font-size:21px;
+}
+
+header p{
+    margin:7px 0 0;
+    color:#cbd5e1;
+    font-size:13px;
+}
+
+.container{
+    max-width:700px;
+    margin:auto;
+    padding:16px;
+}
+
+.page{
+    display:none;
+}
+
+.page.active{
+    display:block;
+}
+
+.card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:18px;
+    padding:16px;
+    margin-bottom:14px;
+
+    box-shadow:
+        0 5px 20px
+        rgba(15,23,42,.07);
+}
+
+.card h2{
+    margin-top:0;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+}
+
+.menu-card{
+    min-height:125px;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+
+    cursor:pointer;
+}
+
+.menu-icon{
+    font-size:34px;
+    margin-bottom:8px;
+}
+
+.menu-card strong{
+    font-size:14px;
+}
+
+.menu-card span{
+    color:var(--muted);
+    font-size:11px;
+    margin-top:5px;
+}
+
+input,
+select,
+textarea{
+    width:100%;
+
+    border:1px solid var(--border);
+
+    background:var(--card);
+    color:var(--text);
+
+    border-radius:12px;
+
+    padding:12px;
+
+    font-family:inherit;
+    font-size:14px;
+
+    margin:6px 0 12px;
+
+    outline:none;
+}
+
+textarea{
+    min-height:100px;
+    resize:vertical;
+}
+
+label{
+    display:block;
+    color:var(--muted);
+    font-size:13px;
+}
+
+button{
+    font-family:inherit;
+}
+
+.btn{
+    width:100%;
+
+    border:0;
+    border-radius:13px;
+
+    padding:13px;
+
+    font-size:14px;
+
+    margin-top:7px;
+}
+
+.btn-primary{
+    background:var(--primary);
+    color:white;
+}
+
+.btn-danger{
+    background:var(--danger);
+    color:white;
+}
+
+.btn-success{
+    background:var(--success);
+    color:white;
+}
+
+.result{
+    background:#eff6ff;
+    border:1px solid #bfdbfe;
+
+    color:#1e3a8a;
+
+    border-radius:14px;
+
+    padding:14px;
+
+    margin-top:12px;
+}
+
+.warning{
+    background:#fff7ed;
+    border:1px solid #fed7aa;
+
+    color:#9a3412;
+
+    border-radius:14px;
+
+    padding:14px;
+
+    margin-top:12px;
+}
+
+.step{
+    background:var(--bg);
+
+    border-right:4px solid var(--primary);
+
+    padding:12px;
+
+    border-radius:10px;
+
+    margin:9px 0;
+}
+
+.part{
+    border:1px solid var(--border);
+
+    border-radius:14px;
+
+    padding:14px;
+
+    margin-bottom:10px;
+}
+
+.part strong{
+    display:block;
+    margin-bottom:5px;
+}
+
+.part small{
+    color:var(--muted);
+}
+
+.badge{
+    display:inline-block;
+
+    background:#dbeafe;
+    color:#1d4ed8;
+
+    border-radius:20px;
+
+    padding:4px 8px;
+
+    font-size:11px;
+
+    margin-top:7px;
+}
+
+.bottom-nav{
+    position:fixed;
+
+    bottom:0;
+    left:0;
+    right:0;
+
+    height:70px;
+
+    background:var(--card);
+
+    border-top:1px solid var(--border);
+
+    display:flex;
+
+    justify-content:space-around;
+    align-items:center;
+
+    z-index:1000;
+}
+
+.nav-btn{
+    border:0;
+    background:none;
+
+    color:var(--muted);
+
+    font-size:11px;
+
+    display:flex;
+    flex-direction:column;
+
+    align-items:center;
+
+    gap:3px;
+}
+
+.nav-btn span{
+    font-size:23px;
+}
+
+.nav-btn.active{
+    color:var(--primary);
+    font-weight:bold;
+}
+
+.photo-preview{
+    width:100%;
+
+    max-height:300px;
+
+    object-fit:contain;
+
+    border-radius:14px;
+
+    margin-top:10px;
+
+    display:none;
+}
+
+.empty{
+    text-align:center;
+
+    color:var(--muted);
+
+    padding:25px 10px;
+}
+
+hr{
+    border:0;
+
+    border-top:1px solid var(--border);
+
+    margin:16px 0;
+}
+
+@media(min-width:600px){
+
+    .grid{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="header-row">
+
+        <div>
+
+            <h1>🔧 تعمیر و عیب‌یابی برد</h1>
+
+            <p>
+                نسخه ۱ — ابزار تعمیرکار الکترونیک
+            </p>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<div class="container">
+
+
+<!-- HOME -->
+
+<section id="home" class="page active">
+
+    <div class="card">
+
+        <h2>
+            داشبورد تعمیرکار
+        </h2>
+
+        <p style="color:var(--muted);font-size:13px">
+
+            ابزارهای پایه برای تعمیر و
+            عیب‌یابی بردهای الکترونیکی.
+
+        </p>
+
+    </div>
+
+
+    <div class="grid">
+
+
+        <div
+            class="card menu-card"
+            onclick="showPage('diagnosis')">
+
+            <div class="menu-icon">
+                🔍
+            </div>
+
+            <strong>
+                عیب‌یابی
+            </strong>
+
+            <span>
+                مشکلات رایج برد
+            </span>
+
+        </div>
+
+
+        <div
+            class="card menu-card"
+            onclick="showPage('calculator')">
+
+            <div class="menu-icon">
+                🧮
+            </div>
+
+            <strong>
+                ماشین‌حساب
+            </strong>
+
+            <span>
+                قانون اهم
+            </span>
+
+        </div>
+
+
+        <div
+            class="card menu-card"
+            onclick="showPage('components')">
+
+            <div class="menu-icon">
+                🧪
+            </div>
+
+            <strong>
+                تست قطعات
+            </strong>
+
+            <span>
+                روش تست قطعات
+            </span>
+
+        </div>
+
+
+        <div
+            class="card menu-card"
+            onclick="showPage('parts')">
+
+            <div class="menu-icon">
+                📚
+            </div>
+
+            <strong>
+                دیتابیس قطعات
+            </strong>
+
+            <span>
+                جستجوی قطعات
+            </span>
+
+        </div>
+
+
+        <div
+            class="card menu-card"
+            onclick="showPage('repair')">
+
+            <div class="menu-icon">
+                📋
+            </div>
+
+            <strong>
+                سوابق تعمیر
+            </strong>
+
+            <span>
+                ثبت تعمیرات
+            </span>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- DIAGNOSIS -->
+
+<section
+    id="diagnosis"
+    class="page">
+
+    <div class="card">
+
+        <h2>
+            🔍 عیب‌یابی برد
+        </h2>
+
+
+        <label>
+            مشکل برد را انتخاب کنید
+        </label>
+
+
+        <select id="fault">
+
+            <option value="">
+                انتخاب کنید
+            </option>
+
+            <option value="noPower">
+                برد روشن نمی‌شود
+            </option>
+
+            <option value="restart">
+                برد ریست می‌شود
+            </option>
+
+            <option value="hot">
+                قطعه داغ می‌شود
+            </option>
+
+        </select>
+
+
+        <button
+            class="btn btn-primary"
+            onclick="diagnose()">
+
+            شروع عیب‌یابی
+
+        </button>
+
+
+        <div id="diagnosisResult"></div>
+
+    </div>
+
+</section>
+
+
+
+<!-- CALCULATOR -->
+
+<section
+    id="calculator"
+    class="page">
+
+    <div class="card">
+
+        <h2>
+            🧮 قانون اهم
+        </h2>
+
+
+        <label>
+            ولتاژ V
+        </label>
+
+        <input
+            id="voltage"
+            type="number"
+            step="any"
+            placeholder="مثلاً 12">
+
+
+        <label>
+            مقاومت Ω
+        </label>
+
+        <input
+            id="resistance"
+            type="number"
+            step="any"
+            placeholder="مثلاً 1000">
+
+
+        <label>
+            جریان A
+        </label>
+
+        <input
+            id="current"
+            type="number"
+            step="any"
+            placeholder="مثلاً 0.01">
+
+
+        <button
+            class="btn btn-primary"
+            onclick="calculateOhm()">
+
+            محاسبه
+
+        </button>
+
+
+        <div id="ohmResult"></div>
+
+    </div>
+
+
+    <div class="card">
+
+        <h2>
+            ⚡ محاسبه توان
+        </h2>
+
+
+        <label>
+            ولتاژ V
+        </label>
+
+        <input
+            id="powerV"
+            type="number"
+            step="any">
+
+
+        <label>
+            جریان A
+        </label>
+
+        <input
+            id="powerI"
+            type="number"
+            step="any">
+
+
+        <button
+            class="btn btn-primary"
+            onclick="calculatePower()">
+
+            محاسبه توان
+
+        </button>
+
+
+        <div id="powerResult"></div>
+
+    </div>
+
+</section>
+
+
+
+<!-- COMPONENTS -->
+
+<section
+    id="components"
+    class="page">
+
+    <div class="card">
+
+        <h2>
+            🧪 تست قطعات
+        </h2>
+
+
+        <label>
+            قطعه را انتخاب کنید
+        </label>
+
+
+        <select id="component">
+
+            <option value="">
+                انتخاب کنید
+            </option>
+
+            <option value="resistor">
+                مقاومت
+            </option>
+
+            <option value="diode">
+                دیود
+            </option>
+
+            <option value="led">
+                LED
+            </option>
+
+            <option value="capacitor">
+                خازن
+            </option>
+
+            <option value="bjt">
+                ترانزیستور
+            </option>
+
+            <option value="mosfet">
+                MOSFET
+            </option>
+
+            <option value="fuse">
+                فیوز
+            </option>
+
+        </select>
+
+
+        <button
+            class="btn btn-primary"
+            onclick="componentTest()">
+
+            نمایش روش تست
+
+        </button>
+
+
+        <div id="componentResult"></div>
+
+    </div>
+
+</section>
+
+
+
+<!-- PARTS -->
+
+<section
+    id="parts"
+    class="page">
+
+    <div class="card">
+
+        <h2>
+            📚 دیتابیس قطعات
+        </h2>
+
+
+        <input
+            id="search"
+            type="search"
+            placeholder="جستجوی قطعه..."
+            oninput="searchParts()">
+
+
+        <div id="partsList"></div>
+
+    </div>
+
+</section>
+
+
+
+<!-- REPAIR -->
+
+<section
+    id="repair"
+    class="page">
+
+    <div class="card">
+
+        <h2>
+            📋 ثبت تعمیر
+        </h2>
+
+
+        <label>
+            نام دستگاه
+        </label>
+
+        <input
+            id="device"
+            placeholder="مثلاً ATM">
+
+
+        <label>
+            مدل دستگاه
+        </label>
+
+        <input
+            id="model"
+            placeholder="مدل دستگاه">
+
+
+        <label>
+            مدل برد
+        </label>
+
+        <input
+            id="board"
+            placeholder="مدل برد">
+
+
+        <label>
+            شرح ایراد
+        </label>
+
+        <textarea
+            id="problem"
+            placeholder="شرح ایراد"></textarea>
+
+
+        <label>
+            نتیجه تست / اندازه‌گیری
+        </label>
+
+        <textarea
+            id="measurements"
+            placeholder="ولتاژها و نتایج تست"></textarea>
+
+
+        <label>
+            قطعه مشکوک
+        </label>
+
+        <input
+            id="suspect"
+            placeholder="مثلاً MOSFET">
+
+
+        <label>
+            نتیجه تعمیر
+        </label>
+
+        <textarea
+            id="result"
+            placeholder="نتیجه تعمیر"></textarea>
+
+
+        <label>
+            عکس برد
+        </label>
+
+        <input
+            type="file"
+            accept="image/*"
+            capture="environment"
+            onchange="loadPhoto(event)">
+
+
+        <img
+            id="photo"
+            class="photo-preview">
+
+
+        <button
+            class="btn btn-success"
+            onclick="saveRepair()">
+
+            💾 ذخیره پرونده
+
+        </button>
+
+    </div>
+
+
+    <div class="card">
+
+        <h2>
+            📂 سوابق
+        </h2>
+
+        <div id="records"></div>
+
+    </div>
+
+</section>
+
+
+</div>
+
+
+
+<!-- NAVIGATION -->
+
+<nav class="bottom-nav">
+
+
+    <button
+        class="nav-btn active"
+        onclick="showPage('home',this)">
+
+        <span>
+            🏠
+        </span>
+
+        خانه
+
+    </button>
+
+
+    <button
+        class="nav-btn"
+        onclick="showPage('diagnosis',this)">
+
+        <span>
+            🔍
+        </span>
+
+        عیب‌یابی
+
+    </button>
+
+
+    <button
+        class="nav-btn"
+        onclick="showPage('calculator',this)">
+
+        <span>
+            🧮
+        </span>
+
+        محاسبات
+
+    </button>
+
+
+    <button
+        class="nav-btn"
+        onclick="showPage('parts',this)">
+
+        <span>
+            📚
+        </span>
+
+        قطعات
+
+    </button>
+
+
+    <button
+        class="nav-btn"
+        onclick="showPage('repair',this)">
+
+        <span>
+            📋
+        </span>
+
+        تعمیرات
+
+    </button>
+
+
+</nav>
+
+
+
+<script>
+
+
+/* ---------------------------
+   PAGE NAVIGATION
+---------------------------- */
+
+function showPage(id,button){
+
+    document
+        .querySelectorAll(".page")
+        .forEach(page=>{
+            page.classList.remove("active");
+        });
+
+
+    document
+        .getElementById(id)
+        .classList.add("active");
+
+
+    document
+        .querySelectorAll(".nav-btn")
+        .forEach(btn=>{
+            btn.classList.remove("active");
+        });
+
+
+    if(button){
+        button.classList.add("active");
+    }
+
+
+    window.scrollTo(0,0);
+
+
+    if(id==="parts"){
+        searchParts();
+    }
+
+
+    if(id==="repair"){
+        loadRecords();
+    }
+
+}
+
+
+
+/* ---------------------------
+   DIAGNOSIS
+---------------------------- */
+
+function diagnose(){
+
+    const fault=
+        document.getElementById("fault").value;
+
+
+    let html="";
+
+
+    if(!fault){
+
+        html=`
+        <div class="warning">
+        ⚠️ ابتدا مشکل را انتخاب کنید.
+        </div>
+        `;
+
+    }
+
+
+    if(fault==="noPower"){
+
+        html=`
+
+        <div class="result">
+
+        <h3>
+            🔍 برد روشن نمی‌شود
+        </h3>
+
+        <div class="step">
+        1️⃣ ولتاژ ورودی برد را اندازه بگیر.
+        </div>
+
+        <div class="step">
+        2️⃣ فیوز ورودی را بررسی کن.
+        </div>
+
+        <div class="step">
+        3️⃣ دیود محافظ را بررسی کن.
+        </div>
+
+        <div class="step">
+        4️⃣ MOSFET ورودی را تست کن.
+        </div>
+
+        <div class="step">
+        5️⃣ رگولاتور را بررسی کن.
+        </div>
+
+        <div class="step">
+        6️⃣ وجود اتصال کوتاه را بررسی کن.
+        </div>
+
+        <hr>
+
+        <strong>
+        قطعات مشکوک:
+        </strong>
+
+        <p>
+        فیوز، دیود، MOSFET،
+        رگولاتور و خازن‌های تغذیه
+        </p>
+
+        </div>
+
+        `;
+
+    }
+
+
+    if(fault==="restart"){
+
+        html=`
+
+        <div class="result">
+
+        <h3>
+            🔄 برد ریست می‌شود
+        </h3>
+
+        <div class="step">
+        1️⃣ ولتاژ تغذیه هنگام ریست را اندازه بگیر.
+        </div>
+
+        <div class="step">
+        2️⃣ افت ولتاژ را بررسی کن.
+        </div>
+
+        <div class="step">
+        3️⃣ خازن‌های تغذیه را بررسی کن.
+        </div>
+
+        <div class="step">
+        4️⃣ رگولاتور را بررسی کن.
+        </div>
+
+        </div>
+
+        `;
+
+    }
+
+
+    if(fault==="hot"){
+
+        html=`
+
+        <div class="warning">
+
+        <h3>
+            🔥 قطعه بیش از حد داغ می‌شود
+        </h3>
+
+        <div class="step">
+        1️⃣ ورودی و خروجی قطعه را اندازه بگیر.
+        </div>
+
+        <div class="step">
+        2️⃣ اتصال کوتاه در خروجی را بررسی کن.
+        </div>
+
+        <div class="step">
+        3️⃣ جریان مصرفی را اندازه بگیر.
+        </div>
+
+        <div class="step">
+        4️⃣ قطعه و قطعات اطراف آن را بررسی کن.
+        </div>
+
+        </div>
+
+        `;
+
+    }
+
+
+    document
+        .getElementById("diagnosisResult")
+        .innerHTML=html;
+
+}
+
+
+
+/* ---------------------------
+   OHM
+---------------------------- */
+
+function calculateOhm(){
+
+    let V=
+        parseFloat(
+            document.getElementById("voltage").value
+        );
+
+
+    let R=
+        parseFloat(
+            document.getElementById("resistance").value
+        );
+
+
+    let I=
+        parseFloat(
+            document.getElementById("current").value
+        );
+
+
+    let html="";
+
+
+    if(!isNaN(V) && !isNaN(R) && R!==0){
+
+        I=V/R;
+
+        html+=`
+        <p>
+        جریان:
+        <strong>
+        ${I.toFixed(6)} A
+        </strong>
+        </p>
+        `;
+
+    }
+
+
+    else if(!isNaN(V) && !isNaN(I) && I!==0){
+
+        R=V/I;
+
+        html+=`
+        <p>
+        مقاومت:
+        <strong>
+        ${R.toFixed(3)} Ω
+        </strong>
+        </p>
+        `;
+
+    }
+
+
+    else if(!isNaN(R) && !isNaN(I)){
+
+        V=R*I;
+
+        html+=`
+        <p>
+        ولتاژ:
+        <strong>
+        ${V.toFixed(3)} V
+        </strong>
+        </p>
+        `;
+
+    }
+
+
+    else{
+
+        html=`
+        <p>
+        حداقل دو مقدار را وارد کنید.
+        </p>
+        `;
+
+    }
+
+
+    document
+        .getElementById("ohmResult")
+        .innerHTML=`
+        <div class="result">
+        ${html}
+        </div>
+        `;
+
+}
+
+
+
+/* ---------------------------
+   POWER
+---------------------------- */
+
+function calculatePower(){
+
+    const V=
+        parseFloat(
+            document.getElementById("powerV").value
+        );
+
+
+    const I=
+        parseFloat(
+            document.getElementById("powerI").value
+        );
+
+
+    if(isNaN(V)||isNaN(I)){
+
+        document
+            .getElementById("powerResult")
+            .innerHTML=`
+            <div class="warning">
+            ⚠️ ولتاژ و جریان را وارد کنید.
+            </div>
+            `;
+
+        return;
+
+    }
+
+
+    const P=V*I;
+
+
+    document
+        .getElementById("powerResult")
+        .innerHTML=`
+
+        <div class="result">
+
+        توان:
+
+        <strong>
+        ${P.toFixed(3)} W
+        </strong>
+
+        </div>
+
+        `;
+
+}
+
+
+
+/* ---------------------------
+   COMPONENT TEST
+---------------------------- */
+
+function componentTest(){
+
+    const type=
+        document.getElementById("component").value;
+
+
+    const data={
+
+        resistor:{
+            title:"مقاومت",
+            text:
+            "مولتی‌متر را روی Ω قرار بده و مقاومت را اندازه بگیر. برای اندازه‌گیری دقیق بهتر است حداقل یک پایه از مدار جدا باشد."
+        },
+
+        diode:{
+            title:"دیود",
+            text:
+            "مولتی‌متر را روی Diode Test قرار بده. در جهت مستقیم افت ولتاژ و در جهت معکوس عدم هدایت را بررسی کن."
+        },
+
+        led:{
+            title:"LED",
+            text:
+            "در حالت Diode Test تست کن. در جهت مستقیم معمولاً افت ولتاژ مشاهده می‌شود و ممکن است LED روشن شود."
+        },
+
+        capacitor:{
+            title:"خازن",
+            text:
+            "خازن را تخلیه کن. برای تست دقیق ظرفیت و ESR از ابزار مناسب استفاده کن. همچنین اتصال کوتاه را بررسی کن."
+        },
+
+        bjt:{
+            title:"ترانزیستور BJT",
+            text:
+            "با Diode Test پیوندهای Base-Emitter و Base-Collector را بررسی کن. نوع NPN یا PNP و پایه‌ها را از دیتاشیت مشخص کن."
+        },
+
+        mosfet:{
+            title:"MOSFET",
+            text:
+            "Gate، Source و Drain را شناسایی کن. اتصال کوتاه Drain-Source و وضعیت Gate را بررسی کن."
+        },
+
+        fuse:{
+            title:"فیوز",
+            text:
+            "مولتی‌متر را روی Continuity قرار بده. فیوز سالم باید مقاومت بسیار کمی داشته باشد."
+        }
+
+    };
+
+
+    if(!type){
+
+        document
+            .getElementById("componentResult")
+            .innerHTML=`
+            <div class="warning">
+            ⚠️ نوع قطعه را انتخاب کنید.
+            </div>
+            `;
+
+        return;
+
+    }
+
+
+    const item=data[type];
+
+
+    document
+        .getElementById("componentResult")
+        .innerHTML=`
+
+        <div class="result">
+
+        <h3>
+        🧪 ${item.title}
+        </h3>
+
+        <p>
+        ${item.text}
+        </p>
+
+        </div>
+
+        `;
+
+}
+
+
+
+/* ---------------------------
+   PART DATABASE
+---------------------------- */
+
+const parts=[
+
+{
+name:"7805",
+type:"رگولاتور",
+description:"رگولاتور خطی 5 ولت",
+test:"ورودی و خروجی را اندازه بگیر. خروجی سالم معمولاً نزدیک 5V است."
+},
+
+{
+name:"LM358",
+type:"آپ‌امپ",
+description:"تقویت‌کننده عملیاتی دوگانه",
+test:"تغذیه و خروجی کانال‌ها بررسی شود."
+},
+
+{
+name:"NE555",
+type:"IC",
+description:"تایمر 555",
+test:"تغذیه، Reset، Trigger و Output بررسی شود."
+},
+
+{
+name:"TL431",
+type:"Reference",
+description:"مرجع ولتاژ",
+test:"پایه‌های REF، Anode و Cathode بررسی شوند."
+},
+
+{
+name:"1N4007",
+type:"دیود",
+description:"دیود یکسوساز",
+test:"در حالت Diode Test افت ولتاژ مستقیم را بررسی کن."
+},
+
+{
+name:"1N4148",
+type:"دیود",
+description:"دیود سیگنال",
+test:"افت ولتاژ مستقیم و عدم هدایت معکوس بررسی شود."
+},
+
+{
+name:"IRFZ44N",
+type:"MOSFET",
+description:"MOSFET قدرت N-Channel",
+test:"Drain، Source و Gate بررسی شوند."
+},
+
+{
+name:"2N2222",
+type:"BJT",
+description:"ترانزیستور NPN",
+test:"پیوندهای Base-Emitter و Base-Collector بررسی شوند."
+},
+
+{
+name:"2N3906",
+type:"BJT",
+description:"ترانزیستور PNP",
+test:"پیوندهای ترانزیستور بررسی شوند."
+},
+
+{
+name:"PC817",
+type:"Optocoupler",
+description:"اپتوکوپلر",
+test:"LED ورودی و بخش خروجی بررسی شود."
+}
+
+];
+
+
+
+function searchParts(){
+
+    const query=
+        (
+            document
+            .getElementById("search")
+            ?.value || ""
+        )
+        .toLowerCase()
+        .trim();
+
+
+    const list=
+        parts.filter(part=>
+
+            part.name
+                .toLowerCase()
+                .includes(query)
+
+            ||
+
+            part.type
+                .toLowerCase()
+                .includes(query)
+
+            ||
+
+            part.description
+                .toLowerCase()
+                .includes(query)
+
+        );
+
+
+    const box=
+        document.getElementById("partsList");
+
+
+    if(list.length===0){
+
+        box.innerHTML=`
+        <div class="empty">
+        قطعه‌ای پیدا نشد.
+        </div>
+        `;
+
+        return;
+
+    }
+
+
+    box.innerHTML=
+
+        list.map(part=>`
+
+        <div class="part">
+
+            <strong>
+            ${part.name}
+            </strong>
+
+            <small>
+            ${part.description}
+            </small>
+
+            <br>
+
+            <span class="badge">
+            ${part.type}
+            </span>
+
+            <p style="font-size:13px">
+
+            🧪 روش تست:
+
+            ${part.test}
+
+            </p>
+
+        </div>
+
+        `).join("");
+
+}
+
+
+
+/* ---------------------------
+   PHOTO
+---------------------------- */
+
+let currentPhoto="";
+
+
+function loadPhoto(event){
+
+    const file=
+        event.target.files[0];
+
+
+    if(!file) return;
+
+
+    const reader=
+        new FileReader();
+
+
+    reader.onload=function(e){
+
+        currentPhoto=
+            e.target.result;
+
+
+        const image=
+            document.getElementById("photo");
+
+
+        image.src=currentPhoto;
+
+        image.style.display="block";
+
+    };
+
+
+    reader.readAsDataURL(file);
+
+}
+
+
+
+/* ---------------------------
+   SAVE REPAIR
+---------------------------- */
+
+function saveRepair(){
+
+    const record={
+
+        id:Date.now(),
+
+        date:
+            new Date()
+            .toLocaleString("fa-IR"),
+
+        device:
+            document.getElementById("device").value,
+
+        model:
+            document.getElementById("model").value,
+
+        board:
+            document.getElementById("board").value,
+
+        problem:
+            document.getElementById("problem").value,
+
+        measurements:
+            document.getElementById("measurements").value,
+
+        suspect:
+            document.getElementById("suspect").value,
+
+        result:
+            document.getElementById("result").value,
+
+        photo:
+            currentPhoto
+
+    };
+
+
+    if(!record.device && !record.problem){
+
+        alert(
+            "نام دستگاه یا شرح ایراد را وارد کنید."
+        );
+
+        return;
+
+    }
+
+
+    const records=
+        JSON.parse(
+            localStorage
+            .getItem("repairRecords") || "[]"
+        );
+
+
+    records.unshift(record);
+
+
+    localStorage.setItem(
+        "repairRecords",
+        JSON.stringify(records)
+    );
+
+
+    alert(
+        "✅ پرونده تعمیر ذخیره شد."
+    );
+
+
+    clearForm();
+
+    loadRecords();
+
+}
+
+
+
+/* ---------------------------
+   LOAD RECORDS
+---------------------------- */
+
+function loadRecords(){
+
+    const box=
+        document.getElementById("records");
+
+
+    const records=
+        JSON.parse(
+            localStorage
+            .getItem("repairRecords") || "[]"
+        );
+
+
+    if(records.length===0){
+
+        box.innerHTML=`
+        <div class="empty">
+        هنوز سابقه‌ای ثبت نشده است.
+        </div>
+        `;
+
+        return;
+
+    }
+
+
+    box.innerHTML=
+
+        records.map(record=>`
+
+        <div class="part">
+
+            <strong>
+            ${record.device || "بدون نام"}
+            </strong>
+
+            <small>
+            ${record.date}
+            </small>
+
+            ${
+                record.model
+                ?
+                `<p>مدل: ${record.model}</p>`
+                :
+                ""
+            }
+
+            ${
+                record.board
+                ?
+                `<p>برد: ${record.board}</p>`
+                :
+                ""
+            }
+
+            ${
+                record.problem
+                ?
+                `<p>
+                🔴 ایراد:
+                ${record.problem}
+                </p>`
+                :
+                ""
+            }
+
+            ${
+                record.measurements
+                ?
+                `<p>
+                📏 اندازه‌گیری:
+                <br>
+                ${record.measurements}
+                </p>`
+                :
+                ""
+            }
+
+            ${
+                record.suspect
+                ?
+                `<p>
+                🔧 قطعه مشکوک:
+                ${record.suspect}
+                </p>`
+                :
+                ""
+            }
+
+            ${
+                record.result
+                ?
+                `<p>
+                ✅ نتیجه:
+                ${record.result}
+                </p>`
+                :
+                ""
+            }
+
+            ${
+                record.photo
+                ?
+                `<img
+                src="${record.photo}"
+                style="
+                width:100%;
+                max-height:250px;
+                object-fit:contain;
+                border-radius:12px;
+                ">
+                `
+                :
+                ""
+            }
+
+
+            <button
+                class="btn btn-danger"
+                onclick="deleteRecord(${record.id})">
+
+                حذف پرونده
+
+            </button>
+
+        </div>
+
+        `).join("");
+
+}
+
+
+
+/* ---------------------------
+   DELETE
+---------------------------- */
+
+function deleteRecord(id){
+
+    if(
+        !confirm(
+            "این پرونده حذف شود؟"
+        )
+    ){
+        return;
+    }
+
+
+    let records=
+        JSON.parse(
+            localStorage
+            .getItem("repairRecords") || "[]"
+        );
+
+
+    records=
+        records.filter(
+            record=>record.id!==id
+        );
+
+
+    localStorage.setItem(
+        "repairRecords",
+        JSON.stringify(records)
+    );
+
+
+    loadRecords();
+
+}
+
+
+
+/* ---------------------------
+   CLEAR FORM
+---------------------------- */
+
+function clearForm(){
+
+    document
+        .getElementById("device")
+        .value="";
+
+    document
+        .getElementById("model")
+        .value="";
+
+    document
+        .getElementById("board")
+        .value="";
+
+    document
+        .getElementById("problem")
+        .value="";
+
+    document
+        .getElementById("measurements")
+        .value="";
+
+    document
+        .getElementById("suspect")
+        .value="";
+
+    document
+        .getElementById("result")
+        .value="";
+
+
+    const photo=
+        document.getElementById("photo");
+
+
+    photo.src="";
+
+    photo.style.display="none";
+
+
+    currentPhoto="";
+
+}
+
+
+
+/* ---------------------------
+   START
+---------------------------- */
+
+searchParts();
+
+loadRecords();
+
+</script>
+
+</body>
+</html>
