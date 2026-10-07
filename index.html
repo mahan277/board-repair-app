@@ -1,36 +1,24 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-
 <meta charset="UTF-8">
-
-<meta name="viewport"
-content="width=device-width,
-initial-scale=1.0,
-maximum-scale=1.0,
-user-scalable=no">
-
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <meta name="theme-color" content="#0f172a">
-
-<title>تعمیر و عیب‌یابی برد - نسخه ۲</title>
+<title>Smart Board Repair AI</title>
 
 <style>
-
-*{
-box-sizing:border-box;
--webkit-tap-highlight-color:transparent;
-}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 
 :root{
 --bg:#f1f5f9;
---card:#ffffff;
+--card:#fff;
 --text:#0f172a;
 --muted:#64748b;
 --primary:#2563eb;
---danger:#dc2626;
 --success:#16a34a;
+--danger:#dc2626;
 --warning:#ea580c;
---border:#e2e8f0;
+--border:#e2e8f0
 }
 
 body.dark{
@@ -38,81 +26,51 @@ body.dark{
 --card:#1e293b;
 --text:#f8fafc;
 --muted:#94a3b8;
---border:#334155;
+--border:#334155
 }
 
 body{
 margin:0;
 background:var(--bg);
 color:var(--text);
-
-font-family:
--apple-system,
-BlinkMacSystemFont,
-"Segoe UI",
-Tahoma,
-Arial,
-sans-serif;
-
-padding-bottom:85px;
-transition:.2s;
+font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Tahoma,Arial,sans-serif;
+padding-bottom:80px
 }
 
 header{
-background:
-linear-gradient(
-135deg,
-#0f172a,
-#1d4ed8
-);
-
+background:linear-gradient(135deg,#020617,#1d4ed8);
 color:white;
-padding:20px 16px;
-
-border-radius:
-0 0 25px 25px;
+padding:20px;
+border-radius:0 0 25px 25px
 }
 
 .header-row{
 display:flex;
 justify-content:space-between;
-align-items:center;
+align-items:center
 }
 
-header h1{
-margin:0;
-font-size:20px;
-}
+header h1{margin:0;font-size:20px}
+header p{margin:6px 0 0;font-size:12px;color:#cbd5e1}
 
-header p{
-margin:6px 0 0;
-font-size:12px;
-color:#cbd5e1;
-}
-
-.theme-btn{
-background:rgba(255,255,255,.15);
+.theme{
 border:0;
+background:rgba(255,255,255,.15);
 color:white;
-font-size:22px;
+border-radius:50%;
 width:42px;
 height:42px;
-border-radius:50%;
+font-size:20px
 }
 
 .container{
 max-width:720px;
 margin:auto;
-padding:15px;
+padding:15px
 }
 
-.page{
-display:none;
-}
-
-.page.active{
-display:block;
-}
+.page{display:none}
+.page.active{display:block}
 
 .card{
 background:var(--card);
@@ -120,2180 +78,699 @@ border:1px solid var(--border);
 border-radius:18px;
 padding:16px;
 margin-bottom:14px;
-
-box-shadow:
-0 5px 20px
-rgba(15,23,42,.07);
-}
-
-.card h2{
-margin-top:0;
-}
-
-.card h3{
-margin-bottom:8px;
+box-shadow:0 5px 20px rgba(15,23,42,.07)
 }
 
 .grid{
 display:grid;
 grid-template-columns:repeat(2,1fr);
-gap:11px;
+gap:11px
 }
 
-.menu-card{
+.menu{
 min-height:125px;
-
 display:flex;
 flex-direction:column;
-justify-content:center;
 align-items:center;
-
-text-align:center;
+justify-content:center;
+text-align:center
 }
 
-.menu-icon{
-font-size:34px;
-margin-bottom:8px;
-}
+.icon{font-size:34px;margin-bottom:7px}
+.menu strong{font-size:14px}
+.menu small{color:var(--muted);margin-top:5px}
 
-.menu-card strong{
-font-size:14px;
-}
-
-.menu-card span{
-color:var(--muted);
-font-size:11px;
-margin-top:5px;
-}
-
-input,
-select,
-textarea{
-
+input,textarea,select{
 width:100%;
-
+padding:12px;
+margin:6px 0 12px;
+border-radius:12px;
 border:1px solid var(--border);
-
 background:var(--card);
 color:var(--text);
-
-border-radius:12px;
-
-padding:12px;
-
 font-family:inherit;
 font-size:14px;
-
-margin:6px 0 12px;
-
-outline:none;
+outline:none
 }
 
-textarea{
-min-height:100px;
-resize:vertical;
-}
+textarea{min-height:120px}
 
 label{
 display:block;
-color:var(--muted);
 font-size:13px;
-}
-
-button{
-font-family:inherit;
-cursor:pointer;
+color:var(--muted)
 }
 
 .btn{
 width:100%;
 border:0;
 border-radius:13px;
-
 padding:13px;
-
-font-size:14px;
-
 margin-top:7px;
+font-size:14px
 }
 
-.btn-primary{
-background:var(--primary);
-color:white;
-}
+.primary{background:var(--primary);color:white}
+.success{background:var(--success);color:white}
+.warning{background:var(--warning);color:white}
+.danger{background:var(--danger);color:white}
 
-.btn-success{
-background:var(--success);
-color:white;
-}
-
-.btn-danger{
-background:var(--danger);
-color:white;
-}
-
-.btn-warning{
-background:var(--warning);
-color:white;
-}
-
-.result,
-.warning,
-.success-box,
-.danger-box{
-
-border-radius:14px;
+.box{
 padding:14px;
-margin-top:12px;
+border-radius:14px;
+margin-top:12px
 }
 
-.result{
+.info{
 background:#eff6ff;
 border:1px solid #bfdbfe;
-color:#1e3a8a;
+color:#1e3a8a
 }
 
-.warning{
+.warn{
 background:#fff7ed;
 border:1px solid #fed7aa;
-color:#9a3412;
+color:#9a3412
 }
 
-.success-box{
+.good{
 background:#f0fdf4;
 border:1px solid #bbf7d0;
-color:#166534;
+color:#166534
 }
 
-.danger-box{
+.bad{
 background:#fef2f2;
 border:1px solid #fecaca;
-color:#991b1b;
+color:#991b1b
 }
 
 .step{
 background:var(--bg);
-
-border-right:
-4px solid var(--primary);
-
-padding:13px;
-
+border-right:4px solid var(--primary);
+padding:12px;
 border-radius:10px;
-
-margin:9px 0;
+margin:8px 0
 }
 
-.step-number{
-display:inline-flex;
-
-width:28px;
-height:28px;
-
-align-items:center;
-justify-content:center;
-
-background:var(--primary);
-color:white;
-
-border-radius:50%;
-
-margin-left:7px;
+.ai{
+border:2px solid var(--primary);
+background:var(--card);
+border-radius:18px;
+padding:15px;
+margin-top:15px
 }
 
-.rail{
-border:1px solid var(--border);
-border-radius:15px;
-padding:13px;
-margin-bottom:10px;
-}
-
-.rail-title{
+.ai-title{
 font-weight:bold;
-font-size:15px;
+font-size:17px;
+margin-bottom:10px
 }
 
-.status{
-display:inline-block;
-
-padding:5px 9px;
-
-border-radius:20px;
-
-font-size:11px;
-
-margin-top:7px;
+.ai-result{
+white-space:pre-wrap;
+line-height:1.9;
+font-size:14px
 }
 
-.status-ok{
-background:#dcfce7;
-color:#166534;
+.loading{
+text-align:center;
+padding:20px;
+color:var(--muted)
 }
 
-.status-bad{
-background:#fee2e2;
-color:#991b1b;
-}
-
-.status-warning{
-background:#ffedd5;
-color:#9a3412;
-}
-
-.part{
-border:1px solid var(--border);
-border-radius:14px;
-padding:14px;
-margin-bottom:10px;
-}
-
-.part strong{
-display:block;
-margin-bottom:5px;
-}
-
-.part small{
-color:var(--muted);
-}
-
-.badge{
-display:inline-block;
-
-background:#dbeafe;
-color:#1d4ed8;
-
-border-radius:20px;
-
-padding:4px 8px;
-
-font-size:11px;
-
-margin-top:7px;
-}
-
-.bottom-nav{
+.bottom{
 position:fixed;
-
 bottom:0;
 left:0;
 right:0;
-
-height:72px;
-
+height:70px;
 background:var(--card);
-
 border-top:1px solid var(--border);
-
 display:flex;
-
 justify-content:space-around;
 align-items:center;
-
-z-index:1000;
+z-index:1000
 }
 
-.nav-btn{
-border:0;
+.nav{
 background:none;
-
+border:0;
 color:var(--muted);
-
 font-size:10px;
-
 display:flex;
 flex-direction:column;
-
 align-items:center;
-
-gap:3px;
+gap:3px
 }
 
-.nav-btn span{
-font-size:22px;
+.nav span{font-size:22px}
+.nav.active{color:var(--primary);font-weight:bold}
+
+.status{
+display:inline-block;
+padding:5px 9px;
+border-radius:20px;
+font-size:11px
 }
 
-.nav-btn.active{
-color:var(--primary);
-font-weight:bold;
+.status.ok{
+background:#dcfce7;
+color:#166534
 }
 
-.photo-preview{
-width:100%;
-max-height:300px;
-
-object-fit:contain;
-
-border-radius:14px;
-
-margin-top:10px;
-
-display:none;
-}
-
-.measure-grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:10px;
-}
-
-.empty{
-text-align:center;
-color:var(--muted);
-padding:25px 10px;
-}
-
-hr{
-border:0;
-border-top:1px solid var(--border);
-margin:16px 0;
+.status.bad{
+background:#fee2e2;
+color:#991b1b
 }
 
 @media(min-width:600px){
-
-.grid{
-grid-template-columns:repeat(3,1fr);
+.grid{grid-template-columns:repeat(3,1fr)}
 }
-
-}
-
 </style>
-
 </head>
 
 <body>
 
 <header>
-
 <div class="header-row">
-
 <div>
-
-<h1>🔧 تعمیر و عیب‌یابی برد</h1>
-
-<p>
-نسخه ۲ — ابزار حرفه‌ای تعمیرکار
-</p>
-
+<h1>🤖 Smart Board Repair AI</h1>
+<p>نسخه ۲ هوشمند</p>
 </div>
 
-<button
-class="theme-btn"
-onclick="toggleTheme()">
-
-🌙
-
-</button>
-
+<button class="theme" onclick="toggleDark()">🌙</button>
 </div>
-
 </header>
-
 
 <div class="container">
 
-
 <!-- HOME -->
-
-<section
-id="home"
-class="page active">
+<section id="home" class="page active">
 
 <div class="card">
-
-<h2>
-داشبورد تعمیرکار
-</h2>
+<h2>🧠 دستیار هوشمند تعمیرکار</h2>
 
 <p style="color:var(--muted);font-size:13px">
-
-سیستم عیب‌یابی، اندازه‌گیری،
-تست قطعات و ثبت سوابق تعمیر.
-
+شرح ایراد و اندازه‌گیری‌های برد را وارد کن تا
+موتور داخلی عیب‌یابی آن را تحلیل کند.
 </p>
-
 </div>
-
 
 <div class="grid">
 
-
-<div
-class="card menu-card"
-onclick="showPage('diagnosis')">
-
-<div class="menu-icon">🔍</div>
-
-<strong>عیب‌یابی هوشمند</strong>
-
-<span>
-تشخیص مرحله‌به‌مرحله
-</span>
-
+<div class="card menu" onclick="showPage('ai')">
+<div class="icon">🤖</div>
+<strong>AI عیب‌یابی</strong>
+<small>تحلیل هوشمند برد</small>
 </div>
 
-
-<div
-class="card menu-card"
-onclick="showPage('power')">
-
-<div class="menu-icon">⚡</div>
-
-<strong>تغذیه برد</strong>
-
-<span>
-بررسی ریل‌های ولتاژ
-</span>
-
+<div class="card menu" onclick="showPage('measure')">
+<div class="icon">📏</div>
+<strong>اندازه‌گیری</strong>
+<small>ثبت ولتاژ و تست</small>
 </div>
 
-
-<div
-class="card menu-card"
-onclick="showPage('short')">
-
-<div class="menu-icon">🔥</div>
-
-<strong>اتصال کوتاه</strong>
-
-<span>
-بررسی Short
-</span>
-
+<div class="card menu" onclick="showPage('power')">
+<div class="icon">⚡</div>
+<strong>تغذیه</strong>
+<small>ریل‌های برد</small>
 </div>
 
-
-<div
-class="card menu-card"
-onclick="showPage('components')">
-
-<div class="menu-icon">🧪</div>
-
-<strong>تست قطعات</strong>
-
-<span>
-مولتی‌متر و قطعات
-</span>
-
+<div class="card menu" onclick="showPage('parts')">
+<div class="icon">🧪</div>
+<strong>قطعات</strong>
+<small>تست قطعات</small>
 </div>
 
-
-<div
-class="card menu-card"
-onclick="showPage('calculator')">
-
-<div class="menu-icon">🧮</div>
-
-<strong>محاسبات</strong>
-
-<span>
-اهم و توان
-</span>
-
+<div class="card menu" onclick="showPage('history')">
+<div class="icon">📋</div>
+<strong>سوابق</strong>
+<small>پرونده تعمیر</small>
 </div>
 
-
-<div
-class="card menu-card"
-onclick="showPage('parts')">
-
-<div class="menu-icon">📚</div>
-
-<strong>دیتابیس قطعات</strong>
-
-<span>
-جستجوی قطعه
-</span>
-
-</div>
-
-
-<div
-class="card menu-card"
-onclick="showPage('repair')">
-
-<div class="menu-icon">📋</div>
-
-<strong>سوابق تعمیر</strong>
-
-<span>
-پرونده‌های ذخیره شده
-</span>
-
+<div class="card menu" onclick="showPage('settings')">
+<div class="icon">⚙️</div>
+<strong>تنظیمات AI</strong>
+<small>اتصال AI</small>
 </div>
 
 </div>
-
 </section>
 
-
-
-<!-- DIAGNOSIS -->
-
-<section
-id="diagnosis"
-class="page">
+<!-- AI -->
+<section id="ai" class="page">
 
 <div class="card">
 
-<h2>
-🔍 عیب‌یابی مرحله‌ای
-</h2>
+<h2>🤖 عیب‌یابی هوشمند</h2>
 
-<label>
-مشکل اصلی برد
-</label>
+<label>مدل دستگاه</label>
+<input id="deviceModel" placeholder="مثلاً Wincor 285">
 
-<select id="fault">
+<label>مدل برد</label>
+<input id="boardModel" placeholder="مثلاً Main Board Rev A">
 
-<option value="">
-انتخاب کنید
-</option>
+<label>شرح کامل ایراد</label>
+<textarea id="faultDescription"
+placeholder="مثلاً برد روشن نمی‌شود و فیوز ورودی سالم است..."></textarea>
 
-<option value="nopower">
-برد روشن نمی‌شود
-</option>
+<h3>📏 اندازه‌گیری‌ها</h3>
 
-<option value="restart">
-برد ریست می‌شود
-</option>
+<label>Vin</label>
+<input id="vin" type="number" step="any" placeholder="V">
 
-<option value="hot">
-قطعه داغ می‌شود
-</option>
+<label>12V</label>
+<input id="v12" type="number" step="any" placeholder="V">
 
-<option value="dead">
-برد کاملاً مرده است
-</option>
+<label>5V</label>
+<input id="v5" type="number" step="any" placeholder="V">
 
-<option value="nooutput">
-خروجی وجود ندارد
-</option>
+<label>3.3V</label>
+<input id="v33" type="number" step="any" placeholder="V">
 
-<option value="unstable">
-ولتاژ ناپایدار است
-</option>
+<label>مقاومت ریل به GND</label>
+<input id="railResistance" type="number" step="any" placeholder="Ω">
 
-</select>
+<label>جریان مصرفی</label>
+<input id="currentDraw" type="number" step="any" placeholder="A">
 
-<button
-class="btn btn-primary"
-onclick="diagnose()">
+<label>قطعه داغ</label>
+<input id="hotPart" placeholder="مثلاً MOSFET">
 
-شروع عیب‌یابی
+<label>اندازه‌گیری‌های دیگر</label>
+<textarea id="extraMeasurements"
+placeholder="هر اندازه‌گیری دیگری که انجام داده‌ای..."></textarea>
 
+<button class="btn primary" onclick="runSmartDiagnosis()">
+🧠 تحلیل هوشمند
 </button>
 
-<div id="diagnosisResult"></div>
+<div id="smartResult"></div>
 
 </div>
-
 </section>
 
-
-
-<!-- POWER -->
-
-<section
-id="power"
-class="page">
+<!-- MEASURE -->
+<section id="measure" class="page">
 
 <div class="card">
 
-<h2>
-⚡ بررسی تغذیه برد
-</h2>
+<h2>📏 بررسی Test Point</h2>
 
-<p style="font-size:13px;color:var(--muted)">
+<label>نام Test Point</label>
+<input id="tpName" placeholder="مثلاً TP07">
 
-ولتاژهای اصلی برد را اندازه بگیر
-و مقدار واقعی را وارد کن.
+<label>ولتاژ مورد انتظار</label>
+<input id="expectedVoltage" type="number" step="any">
 
-</p>
+<label>ولتاژ واقعی</label>
+<input id="actualVoltage" type="number" step="any">
 
+<button class="btn primary" onclick="checkTP()">
+بررسی Test Point
+</button>
 
-<div class="rail">
-
-<div class="rail-title">
-🔴 ریل 12V
-</div>
-
-<input
-id="rail12"
-type="number"
-step="any"
-placeholder="ولتاژ اندازه‌گیری شده">
+<div id="tpResult"></div>
 
 </div>
+</section>
 
+<!-- POWER -->
+<section id="power" class="page">
 
-<div class="rail">
+<div class="card">
 
-<div class="rail-title">
-🟡 ریل 5V
-</div>
+<h2>⚡ تحلیل تغذیه</h2>
 
-<input
-id="rail5"
-type="number"
-step="any"
-placeholder="ولتاژ اندازه‌گیری شده">
+<label>12V</label>
+<input id="power12" type="number" step="any" placeholder="ولتاژ">
 
-</div>
+<label>5V</label>
+<input id="power5" type="number" step="any" placeholder="ولتاژ">
 
+<label>3.3V</label>
+<input id="power33" type="number" step="any" placeholder="ولتاژ">
 
-<div class="rail">
-
-<div class="rail-title">
-🟢 ریل 3.3V
-</div>
-
-<input
-id="rail33"
-type="number"
-step="any"
-placeholder="ولتاژ اندازه‌گیری شده">
-
-</div>
-
-
-<button
-class="btn btn-primary"
-onclick="checkPower()">
-
-بررسی تغذیه
-
+<button class="btn primary" onclick="analyzePower()">
+تحلیل تغذیه
 </button>
 
 <div id="powerResult"></div>
 
 </div>
-
 </section>
 
-
-
-<!-- SHORT -->
-
-<section
-id="short"
-class="page">
+<!-- PARTS -->
+<section id="parts" class="page">
 
 <div class="card">
 
-<h2>
-🔥 بررسی اتصال کوتاه
-</h2>
-
-<div class="warning">
-
-⚠️ قبل از اندازه‌گیری مقاومت،
-تغذیه برد را کاملاً قطع کن.
-
-</div>
-
-<label>
-مقاومت اندازه‌گیری‌شده به زمین Ω
-</label>
-
-<input
-id="shortResistance"
-type="number"
-step="any"
-placeholder="مثلاً 120">
-
-<label>
-ولتاژ ریل
-</label>
-
-<input
-id="shortVoltage"
-type="number"
-step="any"
-placeholder="مثلاً 5">
-
-<button
-class="btn btn-primary"
-onclick="checkShort()">
-
-تحلیل وضعیت
-
-</button>
-
-<div id="shortResult"></div>
-
-</div>
-
-</section>
-
-
-
-<!-- COMPONENTS -->
-
-<section
-id="components"
-class="page">
-
-<div class="card">
-
-<h2>
-🧪 تست قطعات
-</h2>
-
-<label>
-انتخاب قطعه
-</label>
+<h2>🧪 تست قطعات</h2>
 
 <select id="component">
 
-<option value="">
-انتخاب کنید
-</option>
-
-<option value="resistor">
-مقاومت
-</option>
-
-<option value="diode">
-دیود
-</option>
-
-<option value="led">
-LED
-</option>
-
-<option value="capacitor">
-خازن
-</option>
-
-<option value="bjt">
-ترانزیستور BJT
-</option>
-
-<option value="mosfet">
-MOSFET
-</option>
-
-<option value="fuse">
-فیوز
-</option>
-
-<option value="relay">
-رله
-</option>
-
-<option value="coil">
-سلف
-</option>
-
-<option value="ic">
-آی‌سی
-</option>
+<option value="">انتخاب قطعه</option>
+<option>Resistor</option>
+<option>Diode</option>
+<option>LED</option>
+<option>Capacitor</option>
+<option>BJT</option>
+<option>MOSFET</option>
+<option>Fuse</option>
+<option>Regulator</option>
+<option>IC</option>
 
 </select>
 
-<button
-class="btn btn-primary"
-onclick="componentTest()">
-
-نمایش روش تست
-
+<button class="btn primary" onclick="componentGuide()">
+نمایش راهنمای تست
 </button>
 
 <div id="componentResult"></div>
 
 </div>
-
 </section>
 
-
-
-<!-- CALCULATOR -->
-
-<section
-id="calculator"
-class="page">
+<!-- HISTORY -->
+<section id="history" class="page">
 
 <div class="card">
 
-<h2>
-🧮 قانون اهم
-</h2>
+<h2>📋 سوابق تحلیل</h2>
 
-<label>ولتاژ V</label>
-
-<input
-id="voltage"
-type="number"
-step="any">
-
-<label>مقاومت Ω</label>
-
-<input
-id="resistance"
-type="number"
-step="any">
-
-<label>جریان A</label>
-
-<input
-id="current"
-type="number"
-step="any">
-
-<button
-class="btn btn-primary"
-onclick="calculateOhm()">
-
-محاسبه
-
-</button>
-
-<div id="ohmResult"></div>
+<div id="historyList"></div>
 
 </div>
-
-
-<div class="card">
-
-<h2>
-⚡ توان
-</h2>
-
-<label>
-ولتاژ V
-</label>
-
-<input
-id="powerV"
-type="number"
-step="any">
-
-<label>
-جریان A
-</label>
-
-<input
-id="powerI"
-type="number"
-step="any">
-
-<button
-class="btn btn-primary"
-onclick="calculatePower()">
-
-محاسبه توان
-
-</button>
-
-<div id="powerResult"></div>
-
-</div>
-
-
-<div class="card">
-
-<h2>
-🔗 مقاومت سری
-</h2>
-
-<label>
-مقاومت‌ها را با فاصله وارد کن
-</label>
-
-<input
-id="seriesResistors"
-placeholder="مثلاً 100, 220, 1000">
-
-<button
-class="btn btn-primary"
-onclick="calculateSeries()">
-
-محاسبه
-
-</button>
-
-<div id="seriesResult"></div>
-
-</div>
-
 </section>
 
-
-
-<!-- PARTS -->
-
-<section
-id="parts"
-class="page">
+<!-- SETTINGS -->
+<section id="settings" class="page">
 
 <div class="card">
 
-<h2>
-📚 دیتابیس قطعات
-</h2>
+<h2>⚙️ تنظیمات AI</h2>
 
-<input
-id="search"
-type="search"
-placeholder="مثلاً MOSFET یا 7805"
-oninput="searchParts()">
+<p style="font-size:13px;color:var(--muted)">
+در آینده آدرس Cloudflare Worker را اینجا قرار می‌دهیم.
+</p>
 
-<div id="partsList"></div>
+<label>AI Endpoint</label>
 
+<input id="aiEndpoint"
+placeholder="https://your-worker.workers.dev">
+
+<button class="btn success" onclick="saveEndpoint()">
+💾 ذخیره آدرس
+</button>
+
+<div class="box warn">
+⚠️ کلید API را هیچ‌وقت داخل این قسمت وارد نکن.
 </div>
 
+</div>
 </section>
 
-
-
-<!-- REPAIR -->
-
-<section
-id="repair"
-class="page">
-
-<div class="card">
-
-<h2>
-📋 پرونده تعمیر
-</h2>
-
-<label>
-نام دستگاه
-</label>
-
-<input
-id="device"
-placeholder="مثلاً ATM">
-
-<label>
-مدل دستگاه
-</label>
-
-<input
-id="model">
-
-<label>
-مدل برد
-</label>
-
-<input
-id="board">
-
-<label>
-شرح ایراد
-</label>
-
-<textarea
-id="problem"></textarea>
-
-<label>
-ولتاژهای اندازه‌گیری‌شده
-</label>
-
-<textarea
-id="measurements"
-placeholder="12V = ...&#10;5V = ...&#10;3.3V = ..."></textarea>
-
-<label>
-مقاومت / تست اتصال کوتاه
-</label>
-
-<input
-id="shortMeasure"
-placeholder="مثلاً 18Ω به GND">
-
-<label>
-قطعه مشکوک
-</label>
-
-<input
-id="suspect">
-
-<label>
-قطعه تعویض‌شده
-</label>
-
-<input
-id="replaced">
-
-<label>
-نتیجه تعمیر
-</label>
-
-<textarea
-id="repairResult"></textarea>
-
-<label>
-عکس برد
-</label>
-
-<input
-type="file"
-accept="image/*"
-capture="environment"
-onchange="loadPhoto(event)">
-
-<img
-id="photo"
-class="photo-preview">
-
-<button
-class="btn btn-success"
-onclick="saveRepair()">
-
-💾 ذخیره پرونده
-
-</button>
-
 </div>
 
+<nav class="bottom">
 
-<div class="card">
-
-<h2>
-📂 سوابق تعمیر
-</h2>
-
-<div id="records"></div>
-
-</div>
-
-</section>
-
-
-</div>
-
-
-
-<!-- NAV -->
-
-<nav class="bottom-nav">
-
-<button
-class="nav-btn active"
-onclick="showPage('home',this)">
-
-<span>🏠</span>
-خانه
-
+<button class="nav active" onclick="showPage('home',this)">
+<span>🏠</span>خانه
 </button>
 
-
-<button
-class="nav-btn"
-onclick="showPage('diagnosis',this)">
-
-<span>🔍</span>
-عیب‌یابی
-
+<button class="nav" onclick="showPage('ai',this)">
+<span>🤖</span>AI
 </button>
 
-
-<button
-class="nav-btn"
-onclick="showPage('power',this)">
-
-<span>⚡</span>
-تغذیه
-
+<button class="nav" onclick="showPage('measure',this)">
+<span>📏</span>تست
 </button>
 
-
-<button
-class="nav-btn"
-onclick="showPage('components',this)">
-
-<span>🧪</span>
-قطعات
-
+<button class="nav" onclick="showPage('parts',this)">
+<span>🧪</span>قطعات
 </button>
 
-
-<button
-class="nav-btn"
-onclick="showPage('repair',this)">
-
-<span>📋</span>
-تعمیر
-
+<button class="nav" onclick="showPage('history',this)">
+<span>📋</span>سوابق
 </button>
 
 </nav>
 
-
-
 <script>
-
-
-/* =========================
-   NAVIGATION
-========================= */
 
 function showPage(id,button){
 
-document
-.querySelectorAll(".page")
-.forEach(page=>{
-page.classList.remove("active");
-});
+document.querySelectorAll(".page")
+.forEach(x=>x.classList.remove("active"));
 
-document
-.getElementById(id)
+document.getElementById(id)
 .classList.add("active");
 
-document
-.querySelectorAll(".nav-btn")
-.forEach(btn=>{
-btn.classList.remove("active");
-});
+document.querySelectorAll(".nav")
+.forEach(x=>x.classList.remove("active"));
 
-if(button){
-button.classList.add("active");
-}
+if(button) button.classList.add("active");
 
 window.scrollTo(0,0);
 
-if(id==="parts"){
-searchParts();
-}
-
-if(id==="repair"){
-loadRecords();
-}
+if(id==="history") loadHistory();
 
 }
 
+function toggleDark(){
 
-
-/* =========================
-   DARK MODE
-========================= */
-
-function toggleTheme(){
-
-document
-.body
-.classList
-.toggle("dark");
-
-const dark=
-document.body.classList.contains("dark");
+document.body.classList.toggle("dark");
 
 localStorage.setItem(
-"darkMode",
-dark
+"dark",
+document.body.classList.contains("dark")
 );
 
 }
 
-if(
-localStorage.getItem("darkMode")==="true"
-){
-
+if(localStorage.getItem("dark")==="true"){
 document.body.classList.add("dark");
-
 }
 
+function num(id){
 
-
-/* =========================
-   DIAGNOSIS
-========================= */
-
-function diagnose(){
-
-const fault=
-document.getElementById("fault").value;
-
-let html="";
-
-if(!fault){
-
-html=`
-
-<div class="warning">
-
-⚠️ ابتدا مشکل برد را انتخاب کن.
-
-</div>
-
-`;
-
-}
-
-if(fault==="nopower"){
-
-html=`
-
-<div class="result">
-
-<h3>
-🔍 برد روشن نمی‌شود
-</h3>
-
-<div class="step">
-<span class="step-number">1</span>
-ولتاژ ورودی برد را اندازه بگیر.
-</div>
-
-<div class="step">
-<span class="step-number">2</span>
-فیوز ورودی را بررسی کن.
-</div>
-
-<div class="step">
-<span class="step-number">3</span>
-دیود محافظ ورودی را تست کن.
-</div>
-
-<div class="step">
-<span class="step-number">4</span>
-MOSFET ورودی را بررسی کن.
-</div>
-
-<div class="step">
-<span class="step-number">5</span>
-خروجی رگولاتور را اندازه بگیر.
-</div>
-
-<div class="step">
-<span class="step-number">6</span>
-ریل‌های 12V، 5V و 3.3V را بررسی کن.
-</div>
-
-<div class="step">
-<span class="step-number">7</span>
-اتصال کوتاه به GND را بررسی کن.
-</div>
-
-<hr>
-
-<strong>
-قطعات مشکوک:
-</strong>
-
-<p>
-Fuse، TVS، Diode،
-MOSFET، Regulator،
-Capacitor
-</p>
-
-</div>
-
-`;
-
-}
-
-
-if(fault==="restart"){
-
-html=`
-
-<div class="result">
-
-<h3>
-🔄 ریست شدن برد
-</h3>
-
-<div class="step">
-1️⃣ ولتاژ تغذیه هنگام ریست را اندازه بگیر.
-</div>
-
-<div class="step">
-2️⃣ Ripple و افت ولتاژ را بررسی کن.
-</div>
-
-<div class="step">
-3️⃣ خازن‌های تغذیه را بررسی کن.
-</div>
-
-<div class="step">
-4️⃣ رگولاتورها را بررسی کن.
-</div>
-
-<div class="step">
-5️⃣ جریان مصرفی برد را بررسی کن.
-</div>
-
-</div>
-
-`;
-
-}
-
-
-if(fault==="hot"){
-
-html=`
-
-<div class="danger-box">
-
-<h3>
-🔥 قطعه داغ می‌شود
-</h3>
-
-<div class="step">
-1️⃣ تغذیه را قطع کن.
-</div>
-
-<div class="step">
-2️⃣ مقاومت ریل به GND را اندازه بگیر.
-</div>
-
-<div class="step">
-3️⃣ خروجی قطعه را بررسی کن.
-</div>
-
-<div class="step">
-4️⃣ قطعات اطراف را بررسی کن.
-</div>
-
-<div class="step">
-5️⃣ جریان مصرفی را اندازه بگیر.
-</div>
-
-</div>
-
-`;
-
-}
-
-
-if(fault==="dead"){
-
-html=`
-
-<div class="result">
-
-<h3>
-💀 برد کاملاً مرده است
-</h3>
-
-<div class="step">
-1️⃣ ورودی تغذیه
-</div>
-
-<div class="step">
-2️⃣ فیوز
-</div>
-
-<div class="step">
-3️⃣ محافظ ورودی
-</div>
-
-<div class="step">
-4️⃣ MOSFET
-</div>
-
-<div class="step">
-5️⃣ رگولاتور
-</div>
-
-<div class="step">
-6️⃣ کلاک و Reset
-</div>
-
-<div class="step">
-7️⃣ MCU / CPU
-</div>
-
-</div>
-
-`;
-
-}
-
-
-if(fault==="nooutput"){
-
-html=`
-
-<div class="result">
-
-<h3>
-📤 خروجی وجود ندارد
-</h3>
-
-<div class="step">
-1️⃣ ورودی مدار را اندازه بگیر.
-</div>
-
-<div class="step">
-2️⃣ تغذیه IC را بررسی کن.
-</div>
-
-<div class="step">
-3️⃣ پایه Enable را بررسی کن.
-</div>
-
-<div class="step">
-4️⃣ سیگنال ورودی و خروجی را مقایسه کن.
-</div>
-
-</div>
-
-`;
-
-}
-
-
-if(fault==="unstable"){
-
-html=`
-
-<div class="warning">
-
-<h3>
-⚠️ ولتاژ ناپایدار
-</h3>
-
-<div class="step">
-1️⃣ خازن‌های ورودی و خروجی را بررسی کن.
-</div>
-
-<div class="step">
-2️⃣ رگولاتور را بررسی کن.
-</div>
-
-<div class="step">
-3️⃣ بار خروجی را بررسی کن.
-</div>
-
-<div class="step">
-4️⃣ اتصال لحظه‌ای یا Short را بررسی کن.
-</div>
-
-</div>
-
-`;
-
-}
-
-document
-.getElementById("diagnosisResult")
-.innerHTML=html;
-
-}
-
-
-
-/* =========================
-   POWER CHECK
-========================= */
-
-function checkPower(){
-
-const v12=
-parseFloat(
-document.getElementById("rail12").value
+const v=parseFloat(
+document.getElementById(id).value
 );
 
-const v5=
-parseFloat(
-document.getElementById("rail5").value
-);
-
-const v33=
-parseFloat(
-document.getElementById("rail33").value
-);
-
-let html="";
-
-function check(value,target){
-
-if(isNaN(value)){
-
-return `
-<span class="status status-warning">
-وارد نشده
-</span>
-`;
-
+return isNaN(v) ? null : v;
 }
 
-const tolerance=
-target*0.05;
+function getAIData(){
 
-if(
-value>=target-tolerance &&
-value<=target+tolerance
-){
+return{
 
-return `
-<span class="status status-ok">
-تقریباً نرمال
-</span>
-`;
+device:document.getElementById("deviceModel").value,
 
-}
+board:document.getElementById("boardModel").value,
 
-return `
-<span class="status status-bad">
-غیرعادی
-</span>
-`;
+fault:document.getElementById("faultDescription").value,
 
-}
+vin:num("vin"),
 
-html=`
+v12:num("v12"),
 
-<div class="result">
+v5:num("v5"),
 
-<p>
-🔴 12V:
-<strong>
-${isNaN(v12)?"-":v12+"V"}
-</strong>
+v33:num("v33"),
 
-${check(v12,12)}
+railResistance:num("railResistance"),
 
-</p>
+currentDraw:num("currentDraw"),
 
-<p>
-🟡 5V:
-<strong>
-${isNaN(v5)?"-":v5+"V"}
-</strong>
+hotPart:document.getElementById("hotPart").value,
 
-${check(v5,5)}
-
-</p>
-
-<p>
-🟢 3.3V:
-<strong>
-${isNaN(v33)?"-":v33+"V"}
-</strong>
-
-${check(v33,3.3)}
-
-</p>
-
-<hr>
-
-<strong>
-نکته:
-</strong>
-
-<p>
-مقدار واقعی باید با شماتیک،
-دیتاشیت و شرایط بار مقایسه شود.
-</p>
-
-</div>
-
-`;
-
-document
-.getElementById("powerResult")
-.innerHTML=html;
-
-}
-
-
-
-/* =========================
-   SHORT CIRCUIT
-========================= */
-
-function checkShort(){
-
-const R=
-parseFloat(
-document.getElementById("shortResistance").value
-);
-
-const V=
-parseFloat(
-document.getElementById("shortVoltage").value
-);
-
-if(isNaN(R)){
-
-document
-.getElementById("shortResult")
-.innerHTML=`
-
-<div class="warning">
-⚠️ مقدار مقاومت را وارد کن.
-</div>
-
-`;
-
-return;
-
-}
-
-let html="";
-
-if(R<1){
-
-html=`
-
-<div class="danger-box">
-
-<h3>
-🔴 احتمال اتصال کوتاه شدید
-</h3>
-
-<p>
-مقاومت کمتر از 1Ω است.
-</p>
-
-<p>
-ریل را بررسی کن و از اعمال
-تغذیه بدون بررسی بیشتر خودداری کن.
-</p>
-
-</div>
-
-`;
-
-}
-
-else if(R<10){
-
-html=`
-
-<div class="warning">
-
-<h3>
-🟠 مقاومت پایین
-</h3>
-
-<p>
-احتمال وجود بار سنگین یا
-اتصال کوتاه وجود دارد.
-</p>
-
-</div>
-
-`;
-
-}
-
-else{
-
-html=`
-
-<div class="success-box">
-
-<h3>
-🟢 اتصال کوتاه شدید مشاهده نشد
-</h3>
-
-<p>
-مقاومت اندازه‌گیری‌شده:
-<strong>
-${R}Ω
-</strong>
-</p>
-
-<p>
-این نتیجه به‌تنهایی سلامت ریل را اثبات نمی‌کند.
-</p>
-
-</div>
-
-`;
-
-}
-
-if(!isNaN(V)){
-
-const I=
-V/R;
-
-html+=`
-
-<div class="result">
-
-جریان تئوری طبق قانون اهم:
-
-<strong>
-${I.toFixed(3)} A
-</strong>
-
-</div>
-
-`;
-
-}
-
-document
-.getElementById("shortResult")
-.innerHTML=html;
-
-}
-
-
-
-/* =========================
-   COMPONENT TEST
-========================= */
-
-function componentTest(){
-
-const type=
-document.getElementById("component").value;
-
-const data={
-
-resistor:{
-title:"مقاومت",
-text:
-"مولتی‌متر روی Ω. مقدار اندازه‌گیری‌شده را با مقدار اسمی مقایسه کن. برای تست دقیق روی برد ممکن است یک پایه جدا شود."
-},
-
-diode:{
-title:"دیود",
-text:
-"مولتی‌متر روی Diode Test. افت ولتاژ مستقیم و عدم هدایت معکوس را بررسی کن."
-},
-
-led:{
-title:"LED",
-text:
-"در Diode Test بررسی کن. در جهت مستقیم معمولاً افت ولتاژ دیده می‌شود و ممکن است LED روشن شود."
-},
-
-capacitor:{
-title:"خازن",
-text:
-"ابتدا خازن را تخلیه کن. ظرفیت، ESR و نشتی را با ابزار مناسب بررسی کن."
-},
-
-bjt:{
-title:"BJT",
-text:
-"پیوندهای Base-Emitter و Base-Collector را مانند دو دیود بررسی کن. نوع NPN/PNP را مشخص کن."
-},
-
-mosfet:{
-title:"MOSFET",
-text:
-"Gate، Drain و Source را شناسایی کن. اتصال کوتاه D-S و وضعیت Gate را بررسی کن."
-},
-
-fuse:{
-title:"فیوز",
-text:
-"در حالت Continuity تست کن. مقاومت فیوز سالم باید بسیار کم باشد."
-},
-
-relay:{
-title:"رله",
-text:
-"مقاومت Coil و عملکرد کنتاکت‌های NO/NC را بررسی کن."
-},
-
-coil:{
-title:"سلف",
-text:
-"پیوستگی سیم‌پیچ و مقاومت DC را بررسی کن. برای بررسی دقیق‌تر L و Q از LCR متر استفاده کن."
-},
-
-ic:{
-title:"IC",
-text:
-"ابتدا تغذیه IC، GND، Enable، Reset و سپس ورودی و خروجی را بررسی کن. برای تست دقیق به دیتاشیت نیاز است."
-}
+extra:document.getElementById("extraMeasurements").value
 
 };
 
-if(!type){
-
-document
-.getElementById("componentResult")
-.innerHTML=`
-
-<div class="warning">
-⚠️ قطعه را انتخاب کن.
-</div>
-
-`;
-
-return;
-
 }
 
-const item=data[type];
+function localDiagnosis(data){
 
-document
-.getElementById("componentResult")
-.innerHTML=`
+let findings=[];
+let next=[];
+let risk=[];
 
-<div class="result">
+if(data.vin!==null && data.vin<=0){
 
-<h3>
-🧪 ${item.title}
-</h3>
+findings.push("ولتاژ ورودی مشاهده نمی‌شود.");
 
-<p>
-${item.text}
-</p>
-
-</div>
-
-`;
-
-}
-
-
-
-/* =========================
-   OHM
-========================= */
-
-function calculateOhm(){
-
-let V=
-parseFloat(
-document.getElementById("voltage").value
+next.push(
+"ولتاژ ورودی، فیوز و مسیر ورودی را بررسی کن."
 );
 
-let R=
-parseFloat(
-document.getElementById("resistance").value
+risk.push("مسیر ورودی / Fuse");
+
+}
+
+if(data.v12!==null && data.v12<11.4){
+
+findings.push("ریل 12V پایین‌تر از مقدار مورد انتظار است.");
+
+next.push(
+"منبع ورودی، فیوز، MOSFET و مدار تولید 12V را بررسی کن."
 );
 
-let I=
-parseFloat(
-document.getElementById("current").value
+risk.push("بخش تولید یا توزیع 12V");
+
+}
+
+if(data.v5!==null && data.v5<4.75){
+
+findings.push("ریل 5V پایین است.");
+
+next.push(
+"VIN و VOUT رگولاتور 5V و بار متصل به این ریل را بررسی کن."
 );
 
-let html="";
-
-if(!isNaN(V)&&!isNaN(R)&&R!==0){
-
-I=V/R;
-
-html=`
-جریان:
-<strong>
-${I.toFixed(6)} A
-</strong>
-`;
+risk.push("رگولاتور 5V / بار ریل");
 
 }
 
-else if(!isNaN(V)&&!isNaN(I)&&I!==0){
+if(data.v33!==null && data.v33<3.135){
 
-R=V/I;
+findings.push("ریل 3.3V پایین است.");
 
-html=`
-مقاومت:
-<strong>
-${R.toFixed(3)} Ω
-</strong>
-`;
-
-}
-
-else if(!isNaN(R)&&!isNaN(I)){
-
-V=R*I;
-
-html=`
-ولتاژ:
-<strong>
-${V.toFixed(3)} V
-</strong>
-`;
-
-}
-
-else{
-
-html=
-"حداقل دو مقدار را وارد کن.";
-
-}
-
-document
-.getElementById("ohmResult")
-.innerHTML=`
-
-<div class="result">
-${html}
-</div>
-
-`;
-
-}
-
-
-
-/* =========================
-   POWER
-========================= */
-
-function calculatePower(){
-
-const V=
-parseFloat(
-document.getElementById("powerV").value
+next.push(
+"رگولاتور 3.3V و بارهای متصل به این ریل را بررسی کن."
 );
 
-const I=
-parseFloat(
-document.getElementById("powerI").value
+risk.push("رگولاتور 3.3V / بار ریل");
+
+}
+
+if(data.railResistance!==null && data.railResistance<2){
+
+findings.push(
+"مقاومت بسیار پایین نسبت به GND اندازه‌گیری شده است."
 );
 
-if(isNaN(V)||isNaN(I)){
-
-document
-.getElementById("powerResult")
-.innerHTML=`
-
-<div class="warning">
-⚠️ ولتاژ و جریان را وارد کن.
-</div>
-
-`;
-
-return;
-
-}
-
-const P=V*I;
-
-document
-.getElementById("powerResult")
-.innerHTML=`
-
-<div class="result">
-
-توان:
-
-<strong>
-${P.toFixed(3)} W
-</strong>
-
-</div>
-
-`;
-
-}
-
-
-
-/* =========================
-   SERIES
-========================= */
-
-function calculateSeries(){
-
-const input=
-document
-.getElementById("seriesResistors")
-.value;
-
-const values=
-input
-.split(",")
-.map(x=>parseFloat(x.trim()))
-.filter(x=>!isNaN(x));
-
-if(values.length===0){
-
-document
-.getElementById("seriesResult")
-.innerHTML=`
-
-<div class="warning">
-⚠️ مقدار مقاومت‌ها را وارد کن.
-</div>
-
-`;
-
-return;
-
-}
-
-const total=
-values.reduce(
-(sum,value)=>sum+value,
-0
+next.push(
+"قبل از اعمال تغذیه، مسیر ریل، خازن‌ها و ICهای متصل را بررسی کن."
 );
 
-document
-.getElementById("seriesResult")
-.innerHTML=`
-
-<div class="result">
-
-مقاومت معادل سری:
-
-<strong>
-${total} Ω
-</strong>
-
-</div>
-
-`;
+risk.push("احتمال اتصال کوتاه روی ریل");
 
 }
 
+if(data.currentDraw!==null && data.currentDraw>2){
 
+findings.push("جریان مصرفی بالا گزارش شده است.");
 
-/* =========================
-   DATABASE
-========================= */
-
-const parts=[
-
-{
-name:"7805",
-type:"Regulator",
-description:"رگولاتور خطی 5V",
-test:"ورودی و خروجی را بررسی کن."
-},
-
-{
-name:"LM317",
-type:"Regulator",
-description:"رگولاتور قابل تنظیم",
-test:"Vin، Vout و پایه ADJ بررسی شود."
-},
-
-{
-name:"LM358",
-type:"Op-Amp",
-description:"آپ‌امپ دوگانه",
-test:"تغذیه و ورودی/خروجی کانال‌ها بررسی شود."
-},
-
-{
-name:"NE555",
-type:"Timer",
-description:"تایمر 555",
-test:"VCC، GND، Reset، Trigger و Output بررسی شود."
-},
-
-{
-name:"TL431",
-type:"Reference",
-description:"مرجع ولتاژ",
-test:"REF، Cathode و Anode بررسی شوند."
-},
-
-{
-name:"1N4007",
-type:"Diode",
-description:"دیود یکسوساز",
-test:"در Diode Test بررسی شود."
-},
-
-{
-name:"1N4148",
-type:"Diode",
-description:"دیود سیگنال",
-test:"هدایت مستقیم و معکوس بررسی شود."
-},
-
-{
-name:"IRFZ44N",
-type:"MOSFET",
-description:"N-Channel Power MOSFET",
-test:"Gate، Drain و Source بررسی شوند."
-},
-
-{
-name:"2N2222",
-type:"BJT",
-description:"NPN transistor",
-test:"Base-Emitter و Base-Collector بررسی شوند."
-},
-
-{
-name:"2N3906",
-type:"BJT",
-description:"PNP transistor",
-test:"پیوندهای ترانزیستور بررسی شوند."
-},
-
-{
-name:"PC817",
-type:"Optocoupler",
-description:"اپتوکوپلر",
-test:"LED ورودی و بخش خروجی بررسی شود."
-},
-
-{
-name:"LM2596",
-type:"DC-DC",
-description:"مبدل Buck",
-test:"Vin، Vout، SW و Inductor بررسی شود."
-},
-
-{
-name:"AMS1117",
-type:"Regulator",
-description:"رگولاتور LDO",
-test:"ورودی و خروجی بررسی شود."
-},
-
-{
-name:"ESP32",
-type:"MCU",
-description:"میکروکنترلر",
-test:"تغذیه، Reset و خطوط ارتباطی بررسی شوند."
-},
-
-{
-name:"ATmega328P",
-type:"MCU",
-description:"میکروکنترلر AVR",
-test:"VCC، GND، Reset و Clock بررسی شوند."
-}
-
-];
-
-
-function searchParts(){
-
-const query=
-(
-document
-.getElementById("search")
-?.value || ""
-)
-.toLowerCase()
-.trim();
-
-const list=
-parts.filter(part=>
-
-part.name
-.toLowerCase()
-.includes(query)
-
-||
-
-part.type
-.toLowerCase()
-.includes(query)
-
-||
-
-part.description
-.toLowerCase()
-.includes(query)
-
+next.push(
+"ریل‌های تغذیه و قطعه داغ را بررسی کن."
 );
 
-const box=
-document.getElementById("partsList");
+risk.push("مصرف غیرعادی");
 
-if(list.length===0){
+}
+
+if(data.hotPart){
+
+findings.push(
+"قطعه داغ گزارش شده: "+data.hotPart
+);
+
+next.push(
+"ولتاژ دو طرف قطعه و مقاومت مسیرهای اطراف آن را اندازه‌گیری کن."
+);
+
+risk.push("قطعه داغ: "+data.hotPart);
+
+}
+
+if(findings.length===0){
+
+findings.push(
+"اطلاعات فعلی برای تشخیص قطعی کافی نیست."
+);
+
+next.push(
+"ولتاژهای اصلی و مقاومت ریل‌ها نسبت به GND را اندازه‌گیری کن."
+);
+
+}
+
+return {findings,next,risk};
+
+}
+
+async function runSmartDiagnosis(){
+
+const data=getAIData();
+
+const local=localDiagnosis(data);
+
+const box=document.getElementById("smartResult");
 
 box.innerHTML=`
 
-<div class="empty">
-قطعه‌ای پیدا نشد.
+<div class="ai">
+
+<div class="ai-title">
+🧠 تحلیل موتور داخلی
+</div>
+
+<strong>یافته‌ها:</strong>
+
+${local.findings.map(x=>
+`<div class="step">🔎 ${escapeHTML(x)}</div>`
+).join("")}
+
+<strong>تست بعدی:</strong>
+
+${local.next.map(x=>
+`<div class="step">🧪 ${escapeHTML(x)}</div>`
+).join("")}
+
+<strong>موارد مشکوک:</strong>
+
+${local.risk.map(x=>
+`<div class="step">⚠️ ${escapeHTML(x)}</div>`
+).join("")}
+
+</div>
+
+<div class="ai">
+
+<div class="ai-title">
+🤖 تحلیل AI واقعی
+</div>
+
+<div id="aiLoading" class="loading">
+در حال بررسی اتصال AI...
+</div>
+
+</div>
+`;
+
+saveHistory(data,local);
+
+const endpoint=localStorage.getItem("aiEndpoint");
+
+if(!endpoint){
+
+document.getElementById("aiLoading").innerHTML=`
+
+<div class="box warn">
+
+⚠️ AI واقعی هنوز متصل نشده است.
+
+<br><br>
+
+فعلاً موتور عیب‌یابی داخلی فعال است.
+
+<br><br>
+
+بعداً Cloudflare Worker را به این قسمت متصل می‌کنیم.
+
 </div>
 
 `;
@@ -2301,326 +778,316 @@ box.innerHTML=`
 return;
 
 }
-
-box.innerHTML=
-
-list.map(part=>`
-
-<div class="part">
-
-<strong>
-${part.name}
-</strong>
-
-<small>
-${part.description}
-</small>
-
-<br>
-
-<span class="badge">
-${part.type}
-</span>
-
-<p style="font-size:13px">
-
-🧪 روش تست:
-
-${part.test}
-
-</p>
-
-</div>
-
-`).join("");
-
-}
-
-
-
-/* =========================
-   PHOTO
-========================= */
-
-let currentPhoto="";
-
-function loadPhoto(event){
-
-const file=
-event.target.files[0];
-
-if(!file)return;
-
-const reader=
-new FileReader();
-
-reader.onload=function(e){
-
-currentPhoto=
-e.target.result;
-
-const image=
-document.getElementById("photo");
-
-image.src=currentPhoto;
-
-image.style.display="block";
-
-};
-
-reader.readAsDataURL(file);
-
-}
-
-
-
-/* =========================
-   SAVE
-========================= */
-
-function saveRepair(){
-
-const record={
-
-id:Date.now(),
-
-date:
-new Date()
-.toLocaleString("fa-IR"),
-
-device:
-document
-.getElementById("device")
-.value,
-
-model:
-document
-.getElementById("model")
-.value,
-
-board:
-document
-.getElementById("board")
-.value,
-
-problem:
-document
-.getElementById("problem")
-.value,
-
-measurements:
-document
-.getElementById("measurements")
-.value,
-
-shortMeasure:
-document
-.getElementById("shortMeasure")
-.value,
-
-suspect:
-document
-.getElementById("suspect")
-.value,
-
-replaced:
-document
-.getElementById("replaced")
-.value,
-
-result:
-document
-.getElementById("repairResult")
-.value,
-
-photo:
-currentPhoto
-
-};
-
-if(
-!record.device &&
-!record.problem
-){
-
-alert(
-"نام دستگاه یا شرح ایراد را وارد کن."
-);
-
-return;
-
-}
-
-const records=
-JSON.parse(
-localStorage
-.getItem("repairRecordsV2") || "[]"
-);
-
-records.unshift(record);
 
 try{
 
-localStorage.setItem(
-"repairRecordsV2",
-JSON.stringify(records)
-);
+const response=await fetch(endpoint,{
+
+method:"POST",
+
+headers:{
+"Content-Type":"application/json"
+},
+
+body:JSON.stringify({
+
+type:"board_diagnosis",
+
+data:data,
+
+localAnalysis:local
+
+})
+
+});
+
+if(!response.ok){
+
+throw new Error("HTTP "+response.status);
 
 }
 
-catch(e){
+const result=await response.json();
 
-alert(
-"حافظه گوشی برای ذخیره عکس کافی نیست. عکس کوچک‌تری انتخاب کن."
-);
+document.getElementById("aiLoading")
+.innerHTML=`
 
-return;
+<div class="ai-result">
 
-}
+${escapeHTML(
+result.answer || "پاسخی دریافت نشد."
+)}
 
-alert(
-"✅ پرونده تعمیر ذخیره شد."
-);
-
-clearForm();
-
-loadRecords();
-
-}
-
-
-
-/* =========================
-   LOAD RECORDS
-========================= */
-
-function loadRecords(){
-
-const box=
-document.getElementById("records");
-
-const records=
-JSON.parse(
-localStorage
-.getItem("repairRecordsV2") || "[]"
-);
-
-if(records.length===0){
-
-box.innerHTML=`
-
-<div class="empty">
-هنوز پرونده‌ای ثبت نشده است.
 </div>
-
 `;
 
+}
+
+catch(error){
+
+document.getElementById("aiLoading")
+.innerHTML=`
+
+<div class="box bad">
+
+❌ اتصال به AI برقرار نشد.
+
+<br><br>
+
+${escapeHTML(error.message)}
+
+</div>
+`;
+
+}
+
+}
+
+function escapeHTML(text){
+
+return String(text)
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
+
+}
+
+function checkTP(){
+
+const expected=num("expectedVoltage");
+const actual=num("actualVoltage");
+
+if(expected===null || actual===null){
+
+document.getElementById("tpResult").innerHTML=
+`<div class="box warn">
+⚠️ هر دو مقدار را وارد کن.
+</div>`;
+
+return;
+}
+
+const difference=Math.abs(actual-expected);
+const tolerance=Math.abs(expected)*0.05;
+
+if(difference<=tolerance){
+
+document.getElementById("tpResult").innerHTML=`
+
+<div class="box good">
+
+🟢 Test Point تقریباً نرمال است.
+
+<br><br>
+
+Expected:
+<strong>${expected}V</strong>
+
+<br>
+
+Actual:
+<strong>${actual}V</strong>
+
+</div>
+`;
+
+}else{
+
+document.getElementById("tpResult").innerHTML=`
+
+<div class="box bad">
+
+🔴 Test Point غیرعادی است.
+
+<br><br>
+
+اختلاف:
+<strong>${difference.toFixed(3)}V</strong>
+
+<br><br>
+
+رگولاتور، مسیر تولید ولتاژ و بار این نقطه بررسی شود.
+
+</div>
+`;
+
+}
+
+}
+
+function analyzePower(){
+
+const v12=num("power12");
+const v5=num("power5");
+const v33=num("power33");
+
+function test(v,target,name){
+
+if(v===null)
+return `<p>${name}: وارد نشده</p>`;
+
+const min=target*0.95;
+const max=target*1.05;
+
+if(v>=min && v<=max){
+
+return `<p>
+${name}: <strong>${v}V</strong>
+<span class="status ok">نرمال</span>
+</p>`;
+
+}
+
+return `<p>
+${name}: <strong>${v}V</strong>
+<span class="status bad">غیرعادی</span>
+</p>`;
+
+}
+
+document.getElementById("powerResult").innerHTML=`
+
+<div class="box info">
+
+${test(v12,12,"12V")}
+
+${test(v5,5,"5V")}
+
+${test(v33,3.3,"3.3V")}
+
+<hr>
+
+این بررسی اولیه است.
+برای تشخیص نهایی باید شماتیک،
+دیتاشیت و شرایط بار بررسی شوند.
+
+</div>
+`;
+
+}
+
+function componentGuide(){
+
+const c=document.getElementById("component").value;
+
+const guides={
+
+Resistor:
+"مولتی‌متر روی Ω. مقدار اندازه‌گیری‌شده را با مقدار اسمی مقایسه کن. برای اندازه‌گیری دقیق ممکن است لازم باشد یک پایه از مدار جدا شود.",
+
+Diode:
+"در حالت Diode Test، هدایت مستقیم و عدم هدایت معکوس را بررسی کن.",
+
+LED:
+"در Diode Test، جهت مستقیم را بررسی کن. در بعضی مولتی‌مترها LED روشن می‌شود.",
+
+Capacitor:
+"ابتدا خازن را تخلیه کن. سپس ظرفیت، ESR و احتمال اتصال کوتاه را بررسی کن.",
+
+BJT:
+"پیوندهای Base-Emitter و Base-Collector را مانند دیود بررسی کن.",
+
+MOSFET:
+"Gate، Drain و Source را مشخص کن و ابتدا D-S را از نظر Short بررسی کن.",
+
+Fuse:
+"در حالت Continuity تست کن. مقاومت فیوز سالم باید بسیار کم باشد.",
+
+Regulator:
+"VIN، VOUT، GND و در صورت وجود EN را بررسی کن.",
+
+IC:
+"ابتدا تغذیه، GND، Reset و Enable و سپس ورودی و خروجی‌ها را بررسی کن."
+
+};
+
+if(!c){
+
+document.getElementById("componentResult").innerHTML=
+`<div class="box warn">قطعه را انتخاب کن.</div>`;
+
 return;
 
 }
 
+document.getElementById("componentResult").innerHTML=`
+
+<div class="box info">
+
+<h3>🧪 ${escapeHTML(c)}</h3>
+
+<p>${escapeHTML(guides[c])}</p>
+
+</div>
+`;
+
+}
+
+function saveHistory(data,local){
+
+const history=JSON.parse(
+localStorage.getItem("smartHistory") || "[]"
+);
+
+history.unshift({
+
+date:new Date().toLocaleString("fa-IR"),
+
+data:data,
+
+analysis:local
+
+});
+
+localStorage.setItem(
+"smartHistory",
+JSON.stringify(history.slice(0,50))
+);
+
+}
+
+function loadHistory(){
+
+const box=document.getElementById("historyList");
+
+const history=JSON.parse(
+localStorage.getItem("smartHistory") || "[]"
+);
+
+if(!history.length){
+
 box.innerHTML=
+`<div class="box info">
+هنوز تحلیلی ثبت نشده است.
+</div>`;
 
-records.map(record=>`
+return;
 
-<div class="part">
+}
+
+box.innerHTML=history.map(item=>`
+
+<div class="card">
 
 <strong>
-${record.device || "بدون نام"}
+${escapeHTML(item.data.device || "دستگاه نامشخص")}
 </strong>
 
-<small>
-${record.date}
-</small>
+<br>
 
-${
-record.model
-?
-`<p>مدل: ${record.model}</p>`
-:
-""
-}
+<small>${escapeHTML(item.date)}</small>
 
-${
-record.board
-?
-`<p>برد: ${record.board}</p>`
-:
-""
-}
+<p>
+برد:
+${escapeHTML(item.data.board || "-")}
+</p>
 
-${
-record.problem
-?
-`<p>🔴 ایراد:<br>${record.problem}</p>`
-:
-""
-}
-
-${
-record.measurements
-?
-`<p>📏 اندازه‌گیری:<br>${record.measurements}</p>`
-:
-""
-}
-
-${
-record.shortMeasure
-?
-`<p>🔥 اتصال کوتاه:<br>${record.shortMeasure}</p>`
-:
-""
-}
-
-${
-record.suspect
-?
-`<p>🔧 قطعه مشکوک:<br>${record.suspect}</p>`
-:
-""
-}
-
-${
-record.replaced
-?
-`<p>🔩 قطعه تعویض‌شده:<br>${record.replaced}</p>`
-:
-""
-}
-
-${
-record.result
-?
-`<p>✅ نتیجه:<br>${record.result}</p>`
-:
-""
-}
-
-${
-record.photo
-?
-`
-<img
-src="${record.photo}"
-style="
-width:100%;
-max-height:250px;
-object-fit:contain;
-border-radius:12px;
-">
-`
-:
-""
-}
-
-<button
-class="btn btn-danger"
-onclick="deleteRecord(${record.id})">
-
-حذف پرونده
-
-</button>
+<p>
+ایراد:
+${escapeHTML(item.data.fault || "-")}
+</p>
 
 </div>
 
@@ -2628,91 +1095,37 @@ onclick="deleteRecord(${record.id})">
 
 }
 
+function saveEndpoint(){
 
+let url=document
+.getElementById("aiEndpoint")
+.value.trim();
 
-/* =========================
-   DELETE
-========================= */
+if(!url){
 
-function deleteRecord(id){
-
-if(
-!confirm(
-"این پرونده حذف شود؟"
-)
-){
+alert("آدرس Worker را وارد کن.");
 
 return;
 
 }
 
-let records=
-JSON.parse(
-localStorage
-.getItem("repairRecordsV2") || "[]"
-);
+url=url.replace(/\/+$/,"");
 
-records=
-records.filter(
-record=>record.id!==id
-);
+localStorage.setItem("aiEndpoint",url);
 
-localStorage.setItem(
-"repairRecordsV2",
-JSON.stringify(records)
-);
-
-loadRecords();
+alert("✅ آدرس AI ذخیره شد.");
 
 }
 
+const savedEndpoint=
+localStorage.getItem("aiEndpoint");
 
+if(savedEndpoint){
 
-/* =========================
-   CLEAR
-========================= */
-
-function clearForm(){
-
-[
-"device",
-"model",
-"board",
-"problem",
-"measurements",
-"shortMeasure",
-"suspect",
-"replaced",
-"repairResult"
-]
-.forEach(id=>{
-
-document
-.getElementById(id)
-.value="";
-
-});
-
-const photo=
-document.getElementById("photo");
-
-photo.src="";
-
-photo.style.display="none";
-
-currentPhoto="";
+document.getElementById("aiEndpoint")
+.value=savedEndpoint;
 
 }
-
-
-
-/* =========================
-   START
-========================= */
-
-searchParts();
-
-loadRecords();
 
 </script>
 
